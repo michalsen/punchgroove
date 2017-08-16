@@ -1,0 +1,46 @@
+#left {
+  width: 200px;
+  float: left;
+}
+
+#right {
+  margin-left: 200px;
+}
+
+.clear {
+  clear: both;
+}
+
+label{
+  display:block;
+  width:60px;
+  font-size:20px;
+  margin:20px 10px 3px 3px;
+}
+
+#pagewrap {
+  width: 800px;
+}
+
+.left {
+ width: 160px;
+  float: left;
+
+}
+
+.middle {
+  float: left;
+
+}
+
+.right {
+/*  width: 100px;
+  padding: 5px 15px;
+  float: left;*/
+}
+
+#mapid {
+  height: 180px;
+}
+
+
