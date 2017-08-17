@@ -29,7 +29,7 @@ jQuery(document).ready(function($) {
     console.log(save_map);
     var sendData = $.ajax({
                type: 'POST',
-               url: '/wp/wp-content/plugins/punchgroove/assets/ajax/map_data.php',
+               url: '/wp/wp-content/plugins/mapgroove/assets/ajax/map_data.php',
                data: {save_map},
                  success: function(resultData) {
                      $('.datamapping').html(resultData);
@@ -41,12 +41,14 @@ jQuery(document).ready(function($) {
      var xml_url = (e);
      var sendData = $.ajax({
                type: 'POST',
-               url: '/wp/wp-content/plugins/punchgroove/assets/ajax/ajax.php',
+               url: '/wp/wp-content/plugins/mapgroove/assets/ajax/ajax.php',
                data: {xml_url},
                  success: function(resultData) {
                      $('.content_result').html(resultData);
                  }
              }); // end ajax call
   }
+
+
 
 });

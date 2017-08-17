@@ -3,26 +3,27 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit; // Exit if accessed directly
 }
 
-class PunchGroove_Admin {
+class MapGroove_Admin {
 
   public function __construct() {
-    add_action('admin_init', array( $this, 'wp_punchgroove_admin_init'));
+    add_action('admin_init', array( $this, 'wp_mapgroove_admin_init'));
     add_action('admin_init', array( $this, 'admin_scripts_style'));
     add_action('admin_menu', array( $this, 'admin_menu'));
   }
 
   public function admin_scripts_style() {
     if (isset($_REQUEST['page'])) {
-      if ($_REQUEST['page'] == "punchgroove") {
+      if ($_REQUEST['page'] == "mapgroove") {
 
-        wp_enqueue_style('punchgrooveCSS', plugins_url() . "/punchgroove/assets/css/punchgroove.css" );
-        wp_enqueue_style('punchgrooveCSS');
+        wp_enqueue_style('mapgrooveCSS', plugins_url() . "/mapgroove/assets/css/mapgroove.css" );
+        wp_enqueue_style('mapgrooveCSS');
 
-        // wp_enqueue_script('jquery');
-        wp_enqueue_script('punchgrooveJS',  plugins_url() . "/punchgroove/assets/js/punchgroove.js" );
-        wp_enqueue_script('punchgrooveJS');
+        wp_enqueue_script('jquery');
+        wp_enqueue_script( 'jquery-ui-sortable' );
+        wp_enqueue_script('mapgrooveJS',  plugins_url() . "/mapgroove/assets/js/mapgroove.js" );
+        wp_enqueue_script('mapgrooveJS');
 
-        add_action( 'wp_enqueue_scripts', 'punchgrooveJS' );
+        add_action( 'wp_enqueue_scripts', 'mapgrooveJS' );
       }
     }
 
@@ -30,31 +31,31 @@ class PunchGroove_Admin {
 
 
   public function admin_menu() {
-    $page = add_management_page('Punch Groove', 'Punch Groove ', 'manage_options', 'punchgroove', array( $this,'wp_punchgroove_settings_page'));
+    $page = add_management_page('Map Groove', 'Map Groove ', 'manage_options', 'mapgroove', array( $this,'wp_mapgroove_settings_page'));
   }
 
 
-  function wp_punchgroove_admin_init() {
+  function wp_mapgroove_admin_init() {
     if(is_admin()){
       //print plugins_url() . '<br>';
     }
   }
 
-  public function wp_punchgroove_settings_page(){
+  public function wp_mapgroove_settings_page(){
     include('functions.php');
-    include('punchgroove_admin.tpl.php');
+    include('mapgroove_admin.tpl.php');
 
   }
 
 }
 
 
-return new PunchGroove_Admin();
+return new MapGroove_Admin();
 
 
 function getXML() {
   global $wpdb;
-  $sql = 'SELECT xml_url, field_to_from FROM ' . $wpdb->prefix . 'punchgroove ORDER BY TIME DESC LIMIT 1';
+  $sql = 'SELECT xml_url, field_to_from FROM ' . $wpdb->prefix . 'mapgroove ORDER BY TIME DESC LIMIT 1';
   $xml = $wpdb->get_results($sql);
   return $xml;
 }

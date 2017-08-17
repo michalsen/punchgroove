@@ -10,7 +10,7 @@ if (count($_REQUEST) > 0) {
       global $wpdb;
 
 
-      $table_name = $wpdb->prefix . "punchgroove";
+      $table_name = $wpdb->prefix . "mapgroove";
 
       $wpdb->query(
                "truncate $table_name"
@@ -47,7 +47,7 @@ if (count($_REQUEST) > 0) {
       $content = getContent($xml[0]->xml_url);
 
       saveXML($content);
-      //set_transient( 'punchgroove_xml', $content, 60*60 );
+      //set_transient( 'mapgroove_xml', $content, 60*60 );
       $return = 'Path added.';
       //$return .= $content;
     }

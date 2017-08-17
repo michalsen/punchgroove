@@ -78,7 +78,7 @@ if ($cached_XML == false) {
 
 
     $head = '<thead><tr id="row_0">';
-    $row .= '<tr id="row_' . $i . '" class="clickrow">';
+    $row .= '<tr id="row_' . $i . '" class="clickrow" data-points="' . $geo . '">';
       foreach ($value as $title => $detail) {
         $head .= '<th>' . $title . '</th>';
         $row .= '<td>' . $detail . '</td>';

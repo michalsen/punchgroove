@@ -1,6 +1,6 @@
 <?php
 
-$get_XML = get_transient( 'punchgroove_xml' );
+$get_XML = get_transient( 'mapgroove_xml' );
 
 
 $xml = getXML();
@@ -13,6 +13,10 @@ if (strlen($xml[0]->xml_url) > 1) {
 
   $rows = getFields($value);
 
+  for ($i=0; $i < 51; $i++) {
+    $options .= '<option value=' . $i . '>' . $i . '</option>';
+  }
+
   $fieldRow = '<div id="fieldSets">';
     foreach ($rows as $field) {
      if ($fieldsmapped) {
@@ -24,11 +28,13 @@ if (strlen($xml[0]->xml_url) > 1) {
        }
      }
 
+      $fields[] = $fieldValue;
+
       $fieldRow .= '<div class="left">' . $field . ':</div>' .
                    '<div class="right"><input type="text" value="' . $fieldValue . '" id="' . $field . '" class="fieldAdd"></div>';
-                   //'<div class="right">' . $set . '</div>';
       unset($fieldValue);
       $set = ' ';
+
     }
     $fieldRow .= '<button id="setbutton" value="Save">Save</button>';
   $fieldRow .= '</div>';
@@ -40,7 +46,7 @@ if (strlen($xml[0]->xml_url) > 1) {
 
     <div class="panel panel-info">
       <div class="panel-heading">
-          <img src="<?php print plugins_url(); ?>/punchgroove/assets/images/punchgroove.png" width="200px">
+          <img src="<?php print plugins_url(); ?>/mapgroove/assets/images/mapgroove.png" width="200px">
        </div>
        <div class="panel-body">
 
@@ -67,6 +73,8 @@ if (strlen($xml[0]->xml_url) > 1) {
 
 
     <div class="clear"></div>
+
+
 
     </div>
   </div>

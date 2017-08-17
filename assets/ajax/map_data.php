@@ -9,8 +9,8 @@ if (count($_REQUEST) > 0) {
 
     if ($type == 'save_map') {
       $mappingData = [];
-
       $tempArray = [];
+
       $i=0;
       foreach ($item as $key => $value) {
         if ($key % 2 == 0) {
@@ -29,7 +29,7 @@ if (count($_REQUEST) > 0) {
       array_shift($tempArray);
 
       global $wpdb;
-      $table_name = $wpdb->prefix . "punchgroove";
+      $table_name = $wpdb->prefix . "mapgroove";
       $sql = $wpdb->prepare("UPDATE $table_name SET
             field_to_from = '%s'
             WHERE id = %d", json_encode($tempArray), 1);

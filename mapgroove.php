@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Punch Groove
+Plugin Name: MapGroove
 Plugin URI: http://localhost
 Description: Presenting Wordpress content since 1975.
 Version:     1
@@ -31,28 +31,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 //print_r(plugins_url());
 
   if(admin){
-    include_once( 'includes/admin/class-punchgroove-admin.php' );
+    include_once( 'includes/admin/class-mapgroove-admin.php' );
   }
 
 
-  include_once( 'includes/punchgroove-search.php' );
+  include_once( 'includes/mapgroove-search.php' );
 
 
 register_activation_hook( __FILE__, 'jal_install' );
 
 
-//[punchgroove]
-function punchgroove_search(){
+//[mapgroove]
+function mapgroove_search(){
   if (isset($_REQUEST['row'])) {
-    include( 'includes/punchgroove_detail.tpl.php' );
+    include( 'includes/mapgroove_detail.tpl.php' );
   }
    else {
-    include( 'includes/punchgroove.tpl.php' );
+    include( 'includes/mapgroove.tpl.php' );
     return $form;
   }
 }
 
-add_shortcode('punchgroove', 'punchgroove_search');
+add_shortcode('mapgroove', 'mapgroove_search');
 
 
 
@@ -64,7 +64,7 @@ function jal_install () {
   global $wpdb;
   global $jal_db_version;
 
-  $table_name = $wpdb->prefix . 'punchgroove';
+  $table_name = $wpdb->prefix . 'mapgroove';
 
   $charset_collate = $wpdb->get_charset_collate();
 
